@@ -28,6 +28,12 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Make all images responsive by default */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* --------------------------------------------------
     NAVBAR
 -------------------------------------------------- */
@@ -68,7 +74,7 @@ header {
     color: var(--primary-dark); 
 }
 
-/* Offset for fixed navbar */
+/* Offset for fixed navbar on desktop / tablets */
 section {
     padding-top: 90px;
 }
@@ -83,6 +89,7 @@ section {
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
     border-radius: 18px;
+    overflow: hidden;
 }
 
 .card-bg {
@@ -130,10 +137,10 @@ section {
 /* HIGH READABILITY FONT FOR NAMES */
 .card-names {
     font-family: "Playfair Display", serif; 
-    font-size: 3.8rem; /* Large and highly visible */
+    font-size: 3.8rem; /* Large and highly visible on desktop */
     color: var(--dark-text);
-    font-weight: 700; /* Bold weight for clarity */
-    line-height: 1;
+    font-weight: 700;
+    line-height: 1.05;
     letter-spacing: 1px; 
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08); 
     margin: 0.5rem 0;
@@ -230,7 +237,6 @@ section {
 }
 
 .shimmer {
-    /* Uses CSS variables */
     background: linear-gradient(120deg, var(--primary-gold), #d4c09d, var(--primary-gold));
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -390,7 +396,7 @@ footer {
 }
 
 /* --------------------------------------------------
-    PETALS ANIMATION (Styling for the container)
+    PETALS ANIMATION
 -------------------------------------------------- */
 .petals {
     position: fixed;
@@ -403,7 +409,7 @@ footer {
 }
 
 /* --------------------------------------------------
-    SCROLL REVEAL ANIMATION (Styling for JS effect)
+    SCROLL REVEAL ANIMATION
 -------------------------------------------------- */
 .reveal {
     opacity: 0;
@@ -419,10 +425,40 @@ footer {
 /* --------------------------------------------------
     RESPONSIVE
 -------------------------------------------------- */
-@media (max-width: 600px) {
+
+/* Phones & small devices */
+@media (max-width: 768px) {
+
+    /* Header should NOT cover the card on mobile */
+    header {
+        position: static;
+    }
+
+    /* Reduce big padding since header is not fixed now */
+    section {
+        padding-top: 24px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .nav {
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem;
+    }
 
     .nav-links a {
+        font-size: 0.9rem;
         margin-left: 12px;
+    }
+
+    .card-wrapper {
+        max-width: 520px;
+        margin: 1.5rem auto;
     }
 
     .card-bg {
@@ -430,113 +466,65 @@ footer {
     }
 
     .card-content {
-        padding: 2rem 1rem;
+        padding: 2rem 1.2rem;
     }
 
-    /* Mobile Scaling for Highly Legible Names */
+    /* Names & headings */
     .card-names {
-        font-size: 3rem; 
+        font-size: 3rem;
+        line-height: 1.05;
     }
-    
+
     .and-symbol {
         font-size: 2.5rem;
         margin: 0.5rem 0 0.5rem;
+    }
+
+    .bismillah {
+        font-size: 0.9rem;
+        letter-spacing: 0.25em;
     }
 
     .invitation-title {
         font-size: 1rem;
     }
 
+    .parent-line,
+    .details-block p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
     .timeline-item {
         padding: 1rem;
     }
-
-}
-/* --------------------------
-   MOBILE RESPONSIVE TWEAKS
----------------------------*/
-
-/* Card & content should not stick under the fixed navbar */
-main,
-.hero,
-.invitation-section {
-  padding-top: 6rem;          /* push content down below navbar */
-}
-
-/* Make card fit nicely on small screens */
-.invitation-card,
-.hero-card,
-.card-wrapper {
-  max-width: 520px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem;
-}
-
-/* Make images / floral background always fit */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Global typography scale for small devices */
-@media (max-width: 768px) {
-
-  body {
-    font-size: 14px;
-  }
-
-  header .nav {
-    padding: 0.75rem 1rem;
-  }
-
-  .nav-logo {
-    font-size: 1.1rem;
-  }
-
-  .nav-links a {
-    font-size: 0.9rem;
-    margin-left: 12px;
-  }
-
-  /* Names & headings */
-  h1, .bride-name, .groom-name {
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-    line-height: 1.15;
-  }
-
-  h2, h3, .section-title {
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-  }
-
-  .parents-line,
-  .details-text,
-  .venue-text {
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-
-  .invitation-card,
-  .hero-card,
-  .card-wrapper {
-    padding: 1.25rem 1rem;
-    border-radius: 18px;
-  }
 }
 
 /* Extra small phones */
 @media (max-width: 480px) {
-  body {
-    font-size: 13px;
-  }
+    body {
+        font-size: 13px;
+    }
 
-  h1, .bride-name, .groom-name {
-    font-size: clamp(1.6rem, 6vw, 2rem);
-  }
+    .card-wrapper {
+        max-width: 100%;
+        margin: 1.25rem auto;
+    }
 
-  .nav-links {
-    /* if menu looks crowded on very small screens, hide links */
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+    .card-bg {
+        height: 700px;
+    }
+
+    .card-names {
+        font-size: 2.6rem;
+    }
+
+    .and-symbol {
+        font-size: 2.2rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
 }
