@@ -450,4 +450,93 @@ footer {
     .timeline-item {
         padding: 1rem;
     }
+
+}
+/* --------------------------
+   MOBILE RESPONSIVE TWEAKS
+---------------------------*/
+
+/* Card & content should not stick under the fixed navbar */
+main,
+.hero,
+.invitation-section {
+  padding-top: 6rem;          /* push content down below navbar */
+}
+
+/* Make card fit nicely on small screens */
+.invitation-card,
+.hero-card,
+.card-wrapper {
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+/* Make images / floral background always fit */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global typography scale for small devices */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  header .nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    margin-left: 12px;
+  }
+
+  /* Names & headings */
+  h1, .bride-name, .groom-name {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  h2, h3, .section-title {
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  }
+
+  .parents-line,
+  .details-text,
+  .venue-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .invitation-card,
+  .hero-card,
+  .card-wrapper {
+    padding: 1.25rem 1rem;
+    border-radius: 18px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1, .bride-name, .groom-name {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+
+  .nav-links {
+    /* if menu looks crowded on very small screens, hide links */
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
